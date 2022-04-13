@@ -1,5 +1,5 @@
 <div class="container">
-  <form #searchForm="ngForm">
+  <form (ngSubmit)="lookFor('')" #searchForm="">
     <div class="form-group">
       <input type="text" class="form-control" name="name" placeholder="Enter repository name"  required>
       <button type="submit" class="btn"> Search</button>

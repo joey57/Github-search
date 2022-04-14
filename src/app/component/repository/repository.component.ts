@@ -1,26 +1,35 @@
 import { Component, OnInit } from '@angular/core';
+import { StringifyOptions } from 'querystring';
 import { Repository } from 'src/app/repository';
+import { SearchRequestService } from 'src/app/search-request.service';
 
 @Component({
   selector: 'app-repository',
   templateUrl: './repository.component.html',
-  styleUrls: ['./repository.component.css']
+  styleUrls: ['./repository.component.css'],
+  providers: [SearchRequestService]
 })
 export class RepositoryComponent implements OnInit {
 
   repository!: Repository;
-  // public searchRepo: string;
+  public searchRepo!: String;
   public resultCount = 12;
 
-  searchRepos(){
-    // this.searchRepo = '';
-    // this.resultCount = 10;
-    // this.getDataFunction();
+  searchRepos(repository:any){
+    this.searchRepo = '';
+    this.resultCount = 10;
+    this.getDataFunction();
   }
 
-  constructor() { }
+  constructor(public gitRepoRequest:SearchRequestService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.resultCount = 5;
+    this.gitRepoRequest.gitRepos(this.searchRepo);
+  }
+
+  getDataFunction(){
+    this.gitRepoRequest.gitRepos(this.searchRepo);
   }
 
 }

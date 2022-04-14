@@ -4,6 +4,7 @@
   justify-content: space-around;
 }
 .card{
+  background-color: blueviolet;
   box-shadow: 5px, 10px;
 }
 .desc{
@@ -20,7 +21,8 @@
   color: beige;
 }
 .repo{
-  color: black;
+  background-color: rgb(45, 0, 128);
+  color:beige;
   margin-bottom: 2%;
   border-radius: 4px; 
 }

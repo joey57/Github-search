@@ -1,12 +1,11 @@
-<div class="container">
-  <div class="row search">
-    <div class="col-md-9 search-form text-center">
+<!-- <div class="container-fluid">
+    <div class="container text-center">
       <app-search-form (getName)="searchRepos($event)"></app-search-form>
       <br>
     </div>
-    </div>
-    <div class="row main-content">
-      <div class="col-md-10 user-details">
+    
+    <div class="container allrepos">
+      <div class="card">
         <div class="table table-stripped">
           <table class="table">
           <tbody>
@@ -25,4 +24,29 @@
       </div>
     </div>
 
+  </div> -->
+
+  <div class="container-fluid">
+    <app-search-form (getName)="searchRepos($event)"></app-search-form>
+      <div class="container">
+          <div class="container allrepos">
+              <div class="card"  *ngFor="let repository of gitRepoRequest.searchRepo" style="width: 22rem;" class="repo">
+                <div class="card-body">
+                  <h5 class="card-title">Repository Name: &nbsp;{{repository.name}} </h5>
+                  <div class="card-text">
+                    <hr>
+                    <div class="desc"><span class="top">Description:</span> &nbsp;{{repository.description}} 
+                    </div>
+                    <div class="card-subtitle mb-2"><span class="top">Created On:</span> &nbsp;{{repository.created_at | date}}
+                      <div class="card-text"><a style="text-align: center" href="{{repository.html_url}}"></a></div>
+
+                     <div class="card-text">Repository Owner: <a href="{{repository.owner.html_url}}">{{repository.owner.login}}</a></div>
+                    </div>
+                  </div>
+
+                  </div>
+                 
+              </div>
+            </div>
+      </div>
   </div>

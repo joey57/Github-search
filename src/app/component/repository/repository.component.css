@@ -1,28 +1,29 @@
-.container{
-  margin-top: 5rem;
+.allrepos{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
-p {
-  text-indent: 2rem;
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+.card{
+  box-shadow: 5px, 10px;
 }
-.btn{
-  margin-top: 30px;
-  background-color: #056b5b;
+.desc{
+  min-height: 95px;
 }
-
-.loadMorebtn {
-  text-align: center;
+.top{
+  font-weight: 550;
 }
-.display{
-  float: left;
-  margin-bottom: 0.3rem;
+.btn-group{
+  margin-left: 13px;
 }
-
-/*search form*/
-.search-form p {
-  font-size: 30px;
-  margin: 0;
-  justify-content: left;
-  align-items: left;
-  /*position: sticky;*/
+#visit a{
+  text-decoration: none;
+  color: beige;
+}
+.repo{
+  color: black;
+  margin-bottom: 2%;
+  border-radius: 4px; 
+}
+.form-control::placeholder{
+  color: white;
 }

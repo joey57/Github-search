@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { StringifyOptions } from 'querystring';
 import { Repository } from 'src/app/repository';
 import { SearchRequestService } from 'src/app/search-request.service';
 

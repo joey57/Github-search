@@ -31,7 +31,7 @@ export class SearchRequestService {
        following:number;
        avatar_url:string;
      }
-     let promise = new Promise((resolve,reject)=>{
+     const promise = new Promise((resolve,reject)=>{
        this.http.get<ApiResponse>('https://api.github.com/users/' + searchName + '?access_token=' + environment.myApi).toPromise().then((response: any)=>{
          this.users.name = response.name;
          this.users.html_url = response.html_url;
@@ -47,5 +47,37 @@ export class SearchRequestService {
      return promise;
    }
 
+  gitUserRepos(searchMe:any){
+    interface ApiResponse{
+      name: string;
+      description:string;
+      created_at:Date;
+    }
+    let myPromise = new Promise((resolve,reject)=>{
+      this.http.get<ApiResponse>('https://api.github.com/users/' + searchMe + '/repos?order=created&sort=asc?access_token' + environment.myApi).toPromise().then((getResponse:any)=>{
+        this.newRepository=getResponse;
+        resolve(getResponse);
+      },error =>{
+        reject(error);
+      });
+    });
+    return myPromise;
+  }
+
+  gitRepos(searchName:any){
+    interface ApiResponse{
+      items:any;
+    }
+    const promise = new Promise((resolve, reject)=>{
+      this.http.get<ApiResponse>('https://api.github.com/search/repositories?q=' + searchName+ '&per_page=10' + environment.myApi).toPromise().then((getReporesponse:any)=>{
+        this.searchRepo = getReporesponse.items;
+        resolve(getReporesponse);
+      },error=>{
+        this.searchRepo ='error';
+        reject(error);
+      });
+    });
+    return promise;
+  }
 
 }

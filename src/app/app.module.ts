@@ -9,6 +9,7 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { SearchFormComponent } from './component/search-form/search-form.component';
 import { RepositoryComponent } from './component/repository/repository.component';
 import { UserComponent } from './component/user/user.component';
+import { HighlightDirective } from './highlight.directive';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { UserComponent } from './component/user/user.component';
     NavbarComponent,
     SearchFormComponent,
     RepositoryComponent,
-    UserComponent
+    UserComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,

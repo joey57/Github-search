@@ -3,6 +3,7 @@ import { Repository } from './repository';
 import { User } from './user';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class SearchRequestService {
   users!: User;
   newRepository: any;
   searchRepo: any;
+  user = new BehaviorSubject<any>([])
 
   constructor(private http:HttpClient) {
     this.repository = new Repository(' ',' ', ' ',new Date());
@@ -77,6 +79,14 @@ export class SearchRequestService {
       });
     });
     return promise;
+  }
+  searchUser(searchName:string){
+    return this.http.get('https://api.github.com/users/' + searchName + '?access_token=' + environment.myApi).subscribe((response:any)=>{
+      this.user.next(response.data);
+    });
+  }
+  getUser(){
+    return this.user.asObservable();
   }
 
 }

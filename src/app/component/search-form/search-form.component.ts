@@ -13,7 +13,7 @@ export class SearchFormComponent implements OnInit {
 
   search(searchName:string){
     if(searchName !== ''){
-      this.searchService.githubUser(searchName);
+      this.searchService.searchUser(searchName)
     }
     this.searchOutput.emit(this.searchName);
     this.searchName= "";

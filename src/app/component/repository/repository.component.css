@@ -4,7 +4,7 @@
   justify-content: space-around;
 }
 .card{
-  background-color: blueviolet;
+  background-color: rgb(45, 0, 128);
   box-shadow: 5px, 10px;
 }
 .desc{
@@ -18,11 +18,11 @@
 }
 #visit a{
   text-decoration: none;
-  color: beige;
+  color: white
 }
 .repo{
   background-color: rgb(45, 0, 128);
-  color:beige;
+  color: white;
   margin-bottom: 2%;
   border-radius: 4px; 
 }

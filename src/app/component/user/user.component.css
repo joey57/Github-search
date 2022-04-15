@@ -12,8 +12,8 @@ img{
   text-align: left;
 }
 .repo{
-  background-color:rgba(239, 232, 255, 0.705);
-  color: black;
+  background-color: rgb(45, 0, 128);
+  color: white;
   margin-bottom: 2%;
   border-radius: 4px; 
   box-shadow: 3px 3px 5px black;
@@ -71,14 +71,6 @@ hr{
   font-size: 45px;
   margin-bottom: 2%;
   font-family: 'Berkshire Swash', cursive;
-}
-#mouse-click{
-  margin-top: -2%;
-  padding-bottom: 30px; 
-  /* animation-iteration-count: infinite; */
-}
-#mouse-click {
-  animation: bounce 2s infinite;
 }
 
 @keyframes bounce {

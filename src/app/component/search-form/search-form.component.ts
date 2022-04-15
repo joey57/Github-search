@@ -1,4 +1,5 @@
 import { Component, OnInit,Output,EventEmitter } from '@angular/core';
+import { SearchRequestService } from 'src/app/search-request.service';
 
 @Component({
   selector: 'app-search-form',
@@ -10,12 +11,15 @@ export class SearchFormComponent implements OnInit {
 
   @Output() searchOutput = new EventEmitter<any>();
 
-  search(){
+  search(searchName:string){
+    if(searchName !== ''){
+      this.searchService.githubUser(searchName);
+    }
     this.searchOutput.emit(this.searchName);
     this.searchName= "";
   }
 
-  constructor() { }
+  constructor(private searchService:SearchRequestService) { }
 
   ngOnInit(): void {
   }

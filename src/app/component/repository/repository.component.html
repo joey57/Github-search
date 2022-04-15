@@ -4,7 +4,7 @@
     <br>
       <div class="container">
           <div class="container allrepos">
-              <div class="card"  *ngFor="let repository of gitRepoRequest.searchRepo" style="width: 22rem;" class="repo">
+              <div class="card" appHighlight  *ngFor="let repository of gitRepoRequest.searchRepo" style="width: 22rem;" class="repo">
                 <div class="card-body">
                   <h5 class="card-title">Repository Name: &nbsp;{{repository.name}} </h5>
                   <div class="card-text">

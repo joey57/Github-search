@@ -4,7 +4,7 @@
   <form #searchForm='ngForm'>
     <div class="form-group">
       <input type="text" class="form-control" name="find" placeholder="Enter user name" [(ngModel)]="searchName" #find="ngModel" required>
-      <button class="btn btn-info" (click)="search(searchName)"> Search</button>
+      <button class="btn btn-info" (click)="search()"> Search</button>
     </div>
   </form>
   </div>

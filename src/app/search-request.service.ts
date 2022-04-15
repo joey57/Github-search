@@ -3,7 +3,6 @@ import { Repository } from './repository';
 import { User } from './user';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +12,13 @@ export class SearchRequestService {
   users!: User;
   newRepository: any;
   searchRepo: any;
-  user = new BehaviorSubject<any>([])
 
   constructor(private http:HttpClient) {
     this.repository = new Repository(' ',' ', ' ',new Date());
     this.users = new User(' ', ' ', ' ', 0, ' ', new Date(), 0,0);
    }
 
-   githubUser(searchName:any){
+   githubUser(searchName:string){
      interface ApiResponse{
        name: String;
        html_url:string;
@@ -33,7 +31,7 @@ export class SearchRequestService {
        avatar_url:string;
      }
      const promise = new Promise((resolve,reject)=>{
-       this.http.get<ApiResponse>('https://api.github.com/users/' + searchName + '?access_token=' + environment.myApi).toPromise().then((response: any)=>{
+       this.http.get<ApiResponse>('https://api.github.com/users/' + searchName + '?access_token=' + environment.apiKey).toPromise().then((response: any)=>{
          this.users.name = response.name;
          this.users.html_url = response.html_url;
          this.users.login = response.login;
@@ -55,7 +53,7 @@ export class SearchRequestService {
       created_at:Date;
     }
     let myPromise = new Promise((resolve,reject)=>{
-      this.http.get<ApiResponse>('https://api.github.com/users/' + searchMe + '/repos?order=created&sort=asc?access_token' + environment.myApi).toPromise().then((getResponse:any)=>{
+      this.http.get<ApiResponse>('https://api.github.com/users/' + searchMe + '/repos?order=created&sort=asc?access_token' + environment.apiKey).toPromise().then((getResponse:any)=>{
         this.newRepository=getResponse;
         resolve(getResponse);
       },error =>{
@@ -70,7 +68,7 @@ export class SearchRequestService {
       items:any;
     }
     const promise = new Promise((resolve, reject)=>{
-      this.http.get<ApiResponse>('https://api.github.com/search/repositories?q=' + searchName+ '&per_page=10' + environment.myApi).toPromise().then((getReporesponse:any)=>{
+      this.http.get<ApiResponse>('https://api.github.com/search/repositories?q=' + searchName+ '&per_page=10' + environment.apiKey).toPromise().then((getReporesponse:any)=>{
         this.searchRepo = getReporesponse.items;
         resolve(getReporesponse);
       },error=>{
@@ -79,14 +77,6 @@ export class SearchRequestService {
       });
     });
     return promise;
-  }
-  searchUser(searchName:string){
-    return this.http.get('https://api.github.com/users/' + searchName + '?access_token=' + environment.myApi).subscribe((response:any)=>{
-      this.user.next(response.data);
-    });
-  }
-  getUser(){
-    return this.user.asObservable();
   }
 
 }

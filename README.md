@@ -7,7 +7,7 @@
 This is an Angular CLI application that displays github username and  allows people to see public repositories.
 
 ## Live page
-* 
+* (https://joey57.github.io/Github-search/)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
 
